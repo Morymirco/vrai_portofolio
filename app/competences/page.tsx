@@ -15,6 +15,36 @@ interface SkillCategory {
   skills: Skill[];
 }
 
+function SkillBar({ name, level, icon }: Skill) {
+  return (
+    <div className="space-y-2">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="relative w-6 h-6">
+            <Image
+              src={icon}
+              alt={name}
+              fill
+              className="object-contain"
+            />
+          </div>
+          <span className="font-medium dark:text-gray-200">{name}</span>
+        </div>
+        <span className="text-sm text-gray-600 dark:text-gray-400">{level}%</span>
+      </div>
+      <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+        <motion.div
+          initial={{ width: 0 }}
+          animate={{ width: `${level}%` }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="h-full bg-gradient-to-r from-blue-500 to-blue-600 
+                   dark:from-blue-400 dark:to-blue-500 rounded-full"
+        />
+      </div>
+    </div>
+  );
+}
+
 export default function Competences() {
   const skillCategories: SkillCategory[] = [
     {
@@ -115,43 +145,16 @@ export default function Competences() {
     }
   ];
 
-  const SkillBar = ({ name, level, icon }: Skill) => (
-    <div className="bg-white p-4 rounded-lg shadow hover:shadow-md transition-all duration-300
-                    transform hover:-translate-y-1">
-      <div className="flex items-center gap-3 mb-3">
-        <div className="relative w-8 h-8">
-          <Image
-            src={icon}
-            alt={name}
-            fill
-            className="object-contain"
-          />
-        </div>
-        <div className="flex-grow flex justify-between items-center">
-          <span className="font-medium">{name}</span>
-          <span className="text-blue-600 font-semibold">{level}%</span>
-        </div>
-      </div>
-      <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-        <motion.div 
-          className="h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"
-          initial={{ width: 0 }}
-          animate={{ width: `${level}%` }}
-          transition={{ duration: 1, delay: 0.2 }}
-        />
-      </div>
-    </div>
-  );
-
   return (
-    <main className="pt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pb-16">
+    <main className="pt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pb-16 dark:bg-gray-900">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
         <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 
-                       text-transparent bg-clip-text mb-12 text-center">
+                       dark:from-blue-400 dark:to-blue-600 text-transparent bg-clip-text 
+                       mb-12 text-center">
           Mes Compétences
         </h1>
 
@@ -162,13 +165,16 @@ export default function Competences() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
-              className="space-y-6"
+              className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg 
+                       hover:shadow-xl transition-all duration-300"
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 mb-6">
                 {category.icon}
-                <h2 className="text-2xl font-semibold">{category.title}</h2>
+                <h2 className="text-2xl font-semibold dark:text-white">
+                  {category.title}
+                </h2>
               </div>
-              <div className="space-y-4">
+              <div className="space-y-6">
                 {category.skills.map((skill) => (
                   <SkillBar key={skill.name} {...skill} />
                 ))}
@@ -176,6 +182,68 @@ export default function Competences() {
             </motion.section>
           ))}
         </div>
+
+        {/* Section des certifications */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className="mt-16"
+        >
+          <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r 
+                       from-blue-600 to-blue-800 dark:from-blue-400 dark:to-blue-600 
+                       text-transparent bg-clip-text">
+            Certifications
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Full Stack Development",
+                issuer: "OpenClassrooms",
+                date: "2023",
+                icon: "/certifications/openclassrooms.svg"
+              },
+              {
+                name: "Flutter Development",
+                issuer: "Udemy",
+                date: "2023",
+                icon: "/certifications/udemy.svg"
+              },
+              {
+                name: "AWS Cloud Practitioner",
+                issuer: "Amazon Web Services",
+                date: "2023",
+                icon: "/certifications/aws.svg"
+              }
+            ].map((cert, index) => (
+              <motion.div
+                key={cert.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 + index * 0.1 }}
+                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg 
+                         hover:shadow-xl transition-all duration-300"
+              >
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="relative w-12 h-12">
+                    <Image
+                      src={cert.icon}
+                      alt={cert.issuer}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold dark:text-white">{cert.name}</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      {cert.issuer} - {cert.date}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
       </motion.div>
     </main>
   );

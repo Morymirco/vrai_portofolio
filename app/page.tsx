@@ -70,9 +70,9 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen flex flex-col">
-      {/* Section Héro avec padding ajusté */}
-      <section className="hero-section min-h-[90vh] py-10 md:py-20">
+    <main className="min-h-screen flex flex-col dark:bg-gray-900">
+      {/* Section Héro */}
+      <section className="hero-section min-h-[90vh] py-10 md:py-20 dark:bg-gray-900">
         <motion.div 
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -94,7 +94,7 @@ export default function Home() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="hero-title"
+            className="hero-title dark:from-blue-400 dark:to-blue-600"
           >
             Mory Koulibaly
           </motion.h1>
@@ -103,7 +103,7 @@ export default function Home() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="hero-subtitle"
+            className="hero-subtitle dark:text-gray-300"
           >
             Développeur Web & Mobile | Créateur de solutions numériques innovantes
           </motion.h2>
@@ -112,12 +112,13 @@ export default function Home() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="hero-description"
+            className="hero-description dark:text-gray-400"
           >
             Développer des solutions pour transformer vos idées en réalité numérique
           </motion.p>
         </div>
 
+        {/* Boutons d'action */}
         <motion.div 
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -126,15 +127,17 @@ export default function Home() {
         >
           <a href="/contact" 
              className="group flex items-center gap-2 px-8 py-4 bg-blue-600 text-white rounded-lg 
-                      hover:bg-blue-700 transition-all duration-300 
+                      hover:bg-blue-700 dark:hover:bg-blue-500 transition-all duration-300 
                       shadow-lg hover:shadow-xl w-full sm:w-auto justify-center"
           >
             {icons.contact}
             <span>Me contacter</span>
           </a>
           <a href="/projets" 
-             className="group flex items-center gap-2 px-8 py-4 bg-white text-blue-600 rounded-lg 
-                      border-2 border-blue-600 hover:bg-blue-50 
+             className="group flex items-center gap-2 px-8 py-4 bg-white dark:bg-gray-800 
+                      text-blue-600 dark:text-blue-400 rounded-lg 
+                      border-2 border-blue-600 dark:border-blue-400 
+                      hover:bg-blue-50 dark:hover:bg-gray-700
                       transition-all duration-300 w-full sm:w-auto justify-center"
           >
             {icons.projects}
@@ -144,7 +147,7 @@ export default function Home() {
       </section>
 
       {/* Section Services */}
-      <section className="bg-gray-50 py-20">
+      <section className="bg-gray-50 dark:bg-gray-800 py-20">
         <motion.div 
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -152,34 +155,42 @@ export default function Home() {
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         >
           <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-blue-600 
-                       to-blue-800 text-transparent bg-clip-text">
+                       to-blue-800 dark:from-blue-400 dark:to-blue-600 
+                       text-transparent bg-clip-text">
             Mes Services
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl 
+            <div className="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-xl 
                           transition-all duration-300 flex flex-col items-center text-center space-y-4">
               {icons.web}
-              <h3 className="text-xl font-semibold">Développement Web</h3>
-              <p className="text-gray-600">Sites web modernes et applications web performantes</p>
+              <h3 className="text-xl font-semibold dark:text-white">Développement Web</h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                Sites web modernes et applications web performantes
+              </p>
             </div>
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl 
+            <div className="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-xl 
                           transition-all duration-300 flex flex-col items-center text-center space-y-4">
               {icons.mobile}
-              <h3 className="text-xl font-semibold">Applications Mobiles</h3>
-              <p className="text-gray-600">Solutions mobiles cross-platform avec Flutter</p>
+              <h3 className="text-xl font-semibold dark:text-white">Applications Mobiles</h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                Solutions mobiles cross-platform avec Flutter
+              </p>
             </div>
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl 
+            <div className="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-xl 
                           transition-all duration-300 flex flex-col items-center text-center space-y-4">
               {icons.code}
-              <h3 className="text-xl font-semibold">Solutions Sur Mesure</h3>
-              <p className="text-gray-600">Développement personnalisé selon vos besoins</p>
+              <h3 className="text-xl font-semibold dark:text-white">Solutions Sur Mesure</h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                Développement personnalisé selon vos besoins
+              </p>
             </div>
           </div>
         </motion.div>
       </section>
 
       {/* Section Témoignages */}
-      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50 
+                         dark:from-gray-900 dark:to-gray-800">
         <motion.div 
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -187,7 +198,8 @@ export default function Home() {
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         >
           <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-blue-600 
-                       to-blue-800 text-transparent bg-clip-text">
+                       to-blue-800 dark:from-blue-400 dark:to-blue-600 
+                       text-transparent bg-clip-text">
             Ce que disent mes clients
           </h2>
 
@@ -198,8 +210,8 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 * index }}
-                className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow
-                         flex flex-col"
+                className="bg-white dark:bg-gray-700 rounded-xl shadow-lg p-6 
+                         hover:shadow-xl transition-shadow flex flex-col"
               >
                 <div className="flex items-center gap-4 mb-6">
                   <div className="relative w-16 h-16 rounded-full overflow-hidden">
@@ -211,22 +223,29 @@ export default function Home() {
                     />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg">{testimonial.name}</h3>
-                    <p className="text-gray-600 text-sm">{testimonial.role}</p>
-                    <p className="text-blue-600 text-sm">{testimonial.company}</p>
+                    <h3 className="font-semibold text-lg dark:text-white">
+                      {testimonial.name}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                      {testimonial.role}
+                    </p>
+                    <p className="text-blue-600 dark:text-blue-400 text-sm">
+                      {testimonial.company}
+                    </p>
                   </div>
                 </div>
 
                 <blockquote className="relative">
                   <svg
-                    className="absolute top-0 left-0 transform -translate-x-6 -translate-y-8 h-16 w-16 text-gray-100"
+                    className="absolute top-0 left-0 transform -translate-x-6 -translate-y-8 
+                             h-16 w-16 text-gray-100 dark:text-gray-600"
                     fill="currentColor"
                     viewBox="0 0 32 32"
                     aria-hidden="true"
                   >
                     <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                   </svg>
-                  <p className="relative text-gray-600 italic">
+                  <p className="relative text-gray-600 dark:text-gray-300 italic">
                     {testimonial.content}
                   </p>
                 </blockquote>

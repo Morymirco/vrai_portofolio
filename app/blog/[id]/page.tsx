@@ -84,82 +84,73 @@ export default function BlogPost() {
   ];
 
   return (
-    <main className="pt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pb-16">
+    <main className="pt-24 px-4 sm:px-6 lg:px-8 pb-16 dark:bg-gray-900">
       <motion.article
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="max-w-4xl mx-auto"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="max-w-7xl mx-auto"
       >
         {/* En-tête de l'article */}
-        <div className="text-center mb-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="max-w-4xl mx-auto text-center mb-12"
+        >
+          <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 
+                          dark:text-blue-200 rounded-full text-sm font-medium">
+            {post.category}
+          </span>
+          <h1 className="text-4xl font-bold mt-6 mb-4 dark:text-white">
+            {post.title}
+          </h1>
+          <div className="flex items-center justify-center gap-4 text-gray-600 dark:text-gray-400">
+            <span className="flex items-center gap-1">
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              {post.readTime} min de lecture
+            </span>
+            <span>{post.date}</span>
+          </div>
+        </motion.div>
+
+        {/* Contenu principal et barre latérale */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          {/* Article */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
+            className="lg:col-span-2"
           >
-            <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm
-                           font-medium inline-block mb-4">
-              {post.category}
-            </span>
-            <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-            <div className="flex items-center justify-center gap-4 text-gray-600">
-              <span>{post.date}</span>
-              <span>•</span>
-              <span>{post.readTime} de lecture</span>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Image principale */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.3 }}
-          className="relative h-[400px] rounded-xl overflow-hidden mb-12"
-        >
-          <Image
-            src={post.image}
-            alt={post.title}
-            fill
-            className="object-cover"
-          />
-        </motion.div>
-
-        {/* Contenu de l'article */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-12">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-          >
-            <div 
-              className="prose prose-lg max-w-none"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
-
-            {/* Tags */}
-            <div className="mt-8 flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
-                >
-                  {tag}
-                </span>
-              ))}
+            <div className="prose prose-lg dark:prose-invert max-w-none">
+              {/* Image principale */}
+              <div className="relative aspect-video rounded-xl overflow-hidden mb-8">
+                <Image
+                  src={post.image}
+                  alt={post.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              
+              {/* Contenu de l'article */}
+              <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
+                {post.content}
+              </div>
             </div>
           </motion.div>
 
-          {/* Sidebar */}
+          {/* Barre latérale */}
           <motion.aside
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.5 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
             className="space-y-8"
           >
             {/* Auteur */}
-            <div className="bg-white p-6 rounded-xl shadow-lg">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
               <div className="flex items-center gap-4 mb-4">
                 <Image
                   src={post.author.avatar}
@@ -169,15 +160,17 @@ export default function BlogPost() {
                   className="rounded-full"
                 />
                 <div>
-                  <h3 className="font-semibold">{post.author.name}</h3>
-                  <p className="text-gray-600 text-sm">{post.author.bio}</p>
+                  <h3 className="font-semibold dark:text-white">{post.author.name}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    {post.author.bio}
+                  </p>
                 </div>
               </div>
             </div>
 
             {/* Articles connexes */}
-            <div className="bg-white p-6 rounded-xl shadow-lg">
-              <h3 className="font-semibold mb-4">Articles connexes</h3>
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+              <h3 className="font-semibold mb-4 dark:text-white">Articles connexes</h3>
               <div className="space-y-4">
                 {relatedPosts.map((relatedPost) => (
                   <Link
@@ -194,8 +187,8 @@ export default function BlogPost() {
                                  group-hover:scale-105"
                       />
                     </div>
-                    <h4 className="font-medium group-hover:text-blue-600 
-                                 transition-colors line-clamp-2">
+                    <h4 className="font-medium dark:text-white group-hover:text-blue-600 
+                                 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
                       {relatedPost.title}
                     </h4>
                   </Link>
@@ -210,13 +203,15 @@ export default function BlogPost() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
-          className="max-w-4xl mx-auto mt-16 pt-16 border-t"
+          className="max-w-4xl mx-auto mt-16 pt-16 border-t dark:border-gray-700"
         >
-          <h2 className="text-2xl font-semibold mb-8">Commentaires</h2>
+          <h2 className="text-2xl font-semibold mb-8 dark:text-white">Commentaires</h2>
 
           {/* Formulaire de commentaire */}
-          <div className="bg-white p-6 rounded-xl shadow-lg mb-8">
-            <h3 className="text-lg font-medium mb-4">Laisser un commentaire</h3>
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg mb-8">
+            <h3 className="text-lg font-medium mb-4 dark:text-white">
+              Laisser un commentaire
+            </h3>
             <form className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -292,7 +287,7 @@ export default function BlogPost() {
                 key={comment.id}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-white p-6 rounded-xl shadow-lg"
+                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg"
               >
                 <div className="flex items-start gap-4">
                   <div className="relative w-10 h-10 rounded-full overflow-hidden">
@@ -334,21 +329,6 @@ export default function BlogPost() {
           </div>
         </motion.section>
       </motion.article>
-
-      {/* Navigation entre articles */}
-      <div className="max-w-4xl mx-auto mt-12 flex justify-between">
-        <Link
-          href="/blog"
-          className="flex items-center gap-2 text-gray-600 hover:text-blue-600 
-                   transition-colors"
-        >
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
-                  d="M15 19l-7-7 7-7"/>
-          </svg>
-          Retour aux articles
-        </Link>
-      </div>
     </main>
   );
 } 

@@ -160,14 +160,15 @@ export default function Projets() {
     : projects.filter(project => project.category === activeCategory);
 
   return (
-    <main className="pt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pb-16">
+    <main className="pt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pb-16 dark:bg-gray-900">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
         <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 
-                       text-transparent bg-clip-text mb-8 text-center">
+                       dark:from-blue-400 dark:to-blue-600 text-transparent bg-clip-text 
+                       mb-8 text-center">
           Mes Projets
         </h1>
 
@@ -179,8 +180,8 @@ export default function Projets() {
               onClick={() => setActiveCategory(category.id)}
               className={`px-4 py-2 rounded-full transition-all duration-300
                 ${activeCategory === category.id
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                  ? 'bg-blue-600 dark:bg-blue-500 text-white'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'}`}
             >
               {category.name}
             </button>
@@ -199,8 +200,8 @@ export default function Projets() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl 
-                       transition-all duration-300 flex flex-col group"
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden 
+                       hover:shadow-xl transition-all duration-300 flex flex-col group"
             >
               <Link href={`/projets/${project.id}`} className="flex flex-col flex-grow">
                 <div className="relative h-48 overflow-hidden">
@@ -212,8 +213,9 @@ export default function Projets() {
                              group-hover:scale-110"
                   />
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm
-                                   font-medium border border-blue-200">
+                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 
+                                   dark:text-blue-200 rounded-full text-sm font-medium 
+                                   border border-blue-200 dark:border-blue-700">
                       {categories.find(cat => cat.id === project.category)?.name}
                     </span>
                   </div>
@@ -221,10 +223,10 @@ export default function Projets() {
 
                 <div className="p-6 flex flex-col flex-grow">
                   <h3 className="text-xl font-semibold mb-3 group-hover:text-blue-600 
-                               transition-colors">
+                               dark:text-white dark:group-hover:text-blue-400 transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-gray-600 mb-4 flex-grow">
+                  <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
                     {project.description}
                   </p>
 
@@ -232,14 +234,15 @@ export default function Projets() {
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech) => (
                         <span key={tech} 
-                              className="px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
+                              className="px-2 py-1 bg-gray-100 dark:bg-gray-700 
+                                       text-gray-700 dark:text-gray-300 rounded-full text-sm">
                           {tech}
                         </span>
                       ))}
                     </div>
 
-                    <div className="flex gap-4 pt-4 border-t">
-                      <div className="flex items-center gap-2 text-blue-600">
+                    <div className="flex gap-4 pt-4 border-t dark:border-gray-700">
+                      <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400">
                         <span>Voir les détails</span>
                         <svg 
                           className="w-5 h-5 transform transition-transform group-hover:translate-x-1" 

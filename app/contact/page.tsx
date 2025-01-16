@@ -38,14 +38,15 @@ const contactIcons = {
 
 export default function Contact() {
   return (
-    <main className="pt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pb-16">
+    <main className="pt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pb-16 dark:bg-gray-900">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
         <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 
-                       text-transparent bg-clip-text mb-12 text-center">
+                       dark:from-blue-400 dark:to-blue-600 text-transparent bg-clip-text 
+                       mb-12 text-center">
           Me Contacter
         </h1>
 
@@ -57,57 +58,68 @@ export default function Contact() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="bg-white p-8 rounded-xl shadow-lg"
+              className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg"
             >
-              <h2 className="text-2xl font-semibold mb-6">Envoyez-moi un message</h2>
+              <h2 className="text-2xl font-semibold mb-6 dark:text-white">
+                Envoyez-moi un message
+              </h2>
               <form className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 
+                                                 dark:text-gray-300 mb-1">
                     Nom complet
                   </label>
                   <input
                     type="text"
                     id="name"
                     name="name"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 
-                             focus:ring-blue-500 focus:border-transparent transition-all"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 
+                             dark:bg-gray-700 dark:text-white rounded-lg 
+                             focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 
+                             focus:border-transparent transition-all"
                     placeholder="Votre nom"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 
+                                                  dark:text-gray-300 mb-1">
                     Email
                   </label>
                   <input
                     type="email"
                     id="email"
                     name="email"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 
-                             focus:ring-blue-500 focus:border-transparent transition-all"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 
+                             dark:bg-gray-700 dark:text-white rounded-lg 
+                             focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 
+                             focus:border-transparent transition-all"
                     placeholder="votre@email.com"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 
+                                                    dark:text-gray-300 mb-1">
                     Message
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     rows={4}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 
-                             focus:ring-blue-500 focus:border-transparent transition-all"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 
+                             dark:bg-gray-700 dark:text-white rounded-lg 
+                             focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 
+                             focus:border-transparent transition-all"
                     placeholder="Votre message..."
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg 
-                           hover:bg-blue-700 transition-colors flex items-center 
-                           justify-center gap-2 group"
+                  className="w-full bg-blue-600 dark:bg-blue-500 text-white py-3 px-6 
+                           rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 
+                           transition-colors flex items-center justify-center gap-2 group"
                 >
                   <span>Envoyer</span>
                   <span className="transform group-hover:translate-x-1 transition-transform">
@@ -118,15 +130,16 @@ export default function Contact() {
             </motion.section>
 
             {/* Carte des disponibilités */}
-            <div className="bg-white p-8 rounded-xl shadow-lg">
-              <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-                <svg className="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
+              <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2 dark:text-white">
+                <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" 
+                     viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
                         d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
                 Disponibilité
               </h2>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-300">
                 Je suis disponible du lundi au vendredi, de 9h à 18h (GMT).
                 Je réponds généralement aux messages dans les 24 heures.
               </p>
@@ -140,34 +153,43 @@ export default function Contact() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="bg-white p-8 rounded-xl shadow-lg"
+              className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg"
             >
-              <h2 className="text-2xl font-semibold mb-6">Mes Coordonnées</h2>
+              <h2 className="text-2xl font-semibold mb-6 dark:text-white">Mes Coordonnées</h2>
               <div className="space-y-6">
                 <a href="tel:+224666666666" 
-                   className="flex items-center gap-4 text-gray-600 hover:text-blue-600 
-                            transition-colors p-4 rounded-lg hover:bg-blue-50 group">
-                  {contactIcons.phone}
+                   className="flex items-center gap-4 text-gray-600 dark:text-gray-300 
+                            hover:text-blue-600 dark:hover:text-blue-400 transition-colors 
+                            p-4 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 group">
+                  <span className="text-blue-600 dark:text-blue-400">{contactIcons.phone}</span>
                   <div>
-                    <p className="font-medium group-hover:text-blue-600">Téléphone</p>
+                    <p className="font-medium group-hover:text-blue-600 
+                                dark:group-hover:text-blue-400">
+                      Téléphone
+                    </p>
                     <p>+224 66 66 66 666</p>
                   </div>
                 </a>
 
                 <a href="mailto:contact@morykoulibaly.com"
-                   className="flex items-center gap-4 text-gray-600 hover:text-blue-600 
-                            transition-colors p-4 rounded-lg hover:bg-blue-50 group">
-                  {contactIcons.email}
+                   className="flex items-center gap-4 text-gray-600 dark:text-gray-300 
+                            hover:text-blue-600 dark:hover:text-blue-400 transition-colors 
+                            p-4 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 group">
+                  <span className="text-blue-600 dark:text-blue-400">{contactIcons.email}</span>
                   <div>
-                    <p className="font-medium group-hover:text-blue-600">Email</p>
+                    <p className="font-medium group-hover:text-blue-600 
+                                dark:group-hover:text-blue-400">
+                      Email
+                    </p>
                     <p>contact@morykoulibaly.com</p>
                   </div>
                 </a>
 
-                <div className="flex items-center gap-4 text-gray-600 p-4 rounded-lg">
-                  {contactIcons.location}
+                <div className="flex items-center gap-4 text-gray-600 dark:text-gray-300 
+                              p-4 rounded-lg">
+                  <span className="text-blue-600 dark:text-blue-400">{contactIcons.location}</span>
                   <div>
-                    <p className="font-medium">Adresse</p>
+                    <p className="font-medium dark:text-white">Adresse</p>
                     <p>Conakry, Guinée</p>
                     <p>Quartier Kaporo, Commune de Ratoma</p>
                   </div>
@@ -176,11 +198,15 @@ export default function Contact() {
                 <a href="https://wa.me/224666666666"
                    target="_blank"
                    rel="noopener noreferrer" 
-                   className="flex items-center gap-4 text-gray-600 hover:text-blue-600 
-                            transition-colors p-4 rounded-lg hover:bg-blue-50 group">
-                  {contactIcons.whatsapp}
+                   className="flex items-center gap-4 text-gray-600 dark:text-gray-300 
+                            hover:text-blue-600 dark:hover:text-blue-400 transition-colors 
+                            p-4 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 group">
+                  <span className="text-blue-600 dark:text-blue-400">{contactIcons.whatsapp}</span>
                   <div>
-                    <p className="font-medium group-hover:text-blue-600">WhatsApp</p>
+                    <p className="font-medium group-hover:text-blue-600 
+                                dark:group-hover:text-blue-400">
+                      WhatsApp
+                    </p>
                     <p>+224 66 66 66 666</p>
                   </div>
                 </a>
@@ -192,7 +218,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="bg-white p-4 rounded-xl shadow-lg overflow-hidden h-[400px]"
+              className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg overflow-hidden h-[400px]"
             >
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15609.454786128526!2d-13.6868085!3d9.5357003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xf1cd6de25e86b27%3A0x5c429789fa8506af!2sKaporo%2C%20Conakry!5e0!3m2!1sfr!2sgn!4v1709667149413!5m2!1sfr!2sgn"

@@ -5,6 +5,7 @@ import "./globals.css";
 import { Suspense } from 'react';
 import Loading from './loading';
 import ClientLayout from "./client-layout";
+import { Providers } from './providers';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -43,13 +44,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr">
-      <body className={inter.className}>
-        <Suspense fallback={<Loading />}>
-          <ClientLayout>
-            {children}
-          </ClientLayout>
-        </Suspense>
+    <html lang="fr" suppressHydrationWarning>
+      <body className={`${inter.className} dark:bg-gray-900`}>
+        <Providers>
+          <Suspense fallback={<Loading />}>
+            <ClientLayout>
+              {children}
+            </ClientLayout>
+          </Suspense>
+        </Providers>
       </body>
     </html>
   );
