@@ -97,7 +97,7 @@ export default function Projets() {
       title: "SEGURGUINEE",
       description: "Application financière permettant aux étudiants et salariés guinéens d'accéder à leurs ressources financières de manière flexible.",
       technologies: ["Flutter", "Django", "Firebase"],
-      image: "/projects/zalama.png",
+      image: "/projects/findaara.png",
       category: "mobile",
       id: "segurguinee"
     },
@@ -105,7 +105,7 @@ export default function Projets() {
       title: "Gestion d'incubateurs",
       description: "Gestion des paramètres d'incubateurs (température, humidité, notifications, journal de bord, etc.).",
       technologies: ["Flutter", "Firebase"],
-      image: "/projects/incubator.jpg",
+      image: "/projects/kambily.png",
       category: "mobile",
       id: "incubator"
     },
@@ -123,7 +123,7 @@ export default function Projets() {
       title: "APIs Flutter/Django",
       description: "Création d'APIs REST pour connecter des applications Flutter.",
       technologies: ["Django", "PostgreSQL", "DRF"],
-      image: "/projects/api.jpg",
+      image: "/projects/findaara.png",
       category: "backend",
       github: "#",
       id: "apis"
@@ -141,7 +141,7 @@ export default function Projets() {
       title: "Geniusclass Mobile",
       description: "Application mobile pour Geniusclass avec notifications personnalisées et gestion avancée des cours.",
       technologies: ["Firebase", "Flutter"],
-      image: "/projects/geniusclass-mobile.jpg",
+      image: "/projects/geniusclass.png",
       category: "ongoing",
       id: "geniusclass-mobile"
     }

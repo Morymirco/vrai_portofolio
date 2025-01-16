@@ -50,21 +50,21 @@ export default function Home() {
       name: "Sarah Diallo",
       role: "CEO",
       company: "TechInnovate Guinée",
-      image: "/testimonials/sarah.jpg",
+      image: "/profile-photo.jpg",
       content: "Mory a développé notre plateforme e-commerce avec une expertise remarquable. Son professionnalisme et sa capacité à comprendre nos besoins ont fait toute la différence."
     },
     {
       name: "Ibrahim Camara",
       role: "Directeur",
       company: "EduTech Solutions",
-      image: "/testimonials/ibrahim.jpg",
+      image: "/profile-photo.jpg",
       content: "La collaboration avec Mory sur notre application mobile a été excellente. Sa maîtrise technique et sa réactivité ont permis de livrer le projet dans les délais."
     },
     {
       name: "Aminata Sylla",
       role: "Fondatrice",
       company: "Digital Academy",
-      image: "/testimonials/aminata.jpg",
+      image: "/profile-photo.jpg",
       content: "Un développeur talentueux qui apporte des solutions innovantes. Son travail sur notre plateforme d'apprentissage en ligne a dépassé nos attentes."
     }
   ];
