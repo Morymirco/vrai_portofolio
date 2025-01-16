@@ -71,8 +71,8 @@ export default function Home() {
 
   return (
     <main className="min-h-screen flex flex-col">
-      {/* Section Héro */}
-      <section className="hero-section min-h-[90vh] py-20">
+      {/* Section Héro avec padding ajusté */}
+      <section className="hero-section min-h-[90vh] py-10 md:py-20">
         <motion.div 
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}

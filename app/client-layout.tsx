@@ -104,8 +104,8 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         </ul>
       </nav>
 
-      {/* Contenu principal */}
-      <main className="pt-16 md:pt-20">
+      {/* Contenu principal avec padding ajusté */}
+      <main className="pt-6 md:pt-20">
         {children}
       </main>
     </div>
