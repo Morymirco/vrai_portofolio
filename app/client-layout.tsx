@@ -60,7 +60,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   const pathname = usePathname();
 
   return (
-    <>
+    <div className="min-h-screen relative pb-16 md:pb-0">
       {/* Navigation desktop */}
       <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-sm shadow-lg p-4 z-50 
                      hidden md:block">
@@ -83,7 +83,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       </nav>
 
       {/* Navigation mobile */}
-      <nav className="fixed bottom-0 w-full bg-white border-t shadow-lg z-50 md:hidden">
+      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg z-50 md:hidden">
         <ul className="flex justify-around items-center p-2">
           {navigationItems.map((item) => (
             <li key={item.name}>
@@ -104,10 +104,10 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         </ul>
       </nav>
 
-      {/* Ajustement du padding pour le contenu */}
-      <div className="pb-16 md:pb-0">
+      {/* Contenu principal */}
+      <main className="pt-16 md:pt-20">
         {children}
-      </div>
-    </>
+      </main>
+    </div>
   );
 } 

@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
+import { Suspense } from 'react';
+import Loading from './loading';
+import ClientLayout from "./client-layout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -42,80 +45,11 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className={inter.className}>
-        <nav className="main-nav">
-          <ul>
-            <li><Link href="/">Accueil</Link></li>
-            <li><Link href="/projets">Projets</Link></li>
-            <li><Link href="/competences">Compétences</Link></li>
-            <li><Link href="/a-propos">À propos</Link></li>
-            <li><Link href="/blog">Blog</Link></li>
-            <li><Link href="/contact">Contact</Link></li>
-          </ul>
-        </nav>
-        
-        <div className="min-h-screen">
-          {children}
-        </div>
-
-        <footer className="bg-white border-t py-4">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              {/* Logo et Copyright */}
-              <div className="flex items-center gap-4">
-                <Link href="/" className="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 
-                                        text-transparent bg-clip-text">
-                  MK
-                </Link>
-                <span className="text-sm text-gray-500">
-                  © {new Date().getFullYear()} Mory Koulibaly
-                </span>
-              </div>
-
-              {/* Navigation rapide */}
-              <nav className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
-                <Link href="/projets" className="hover:text-blue-600 transition-colors duration-300">
-                  Projets
-                </Link>
-                <Link href="/competences" className="hover:text-blue-600 transition-colors duration-300">
-                  Compétences
-                </Link>
-                <Link href="/contact" className="hover:text-blue-600 transition-colors duration-300">
-                  Contact
-                </Link>
-              </nav>
-
-              {/* Réseaux sociaux */}
-              <div className="flex items-center space-x-4">
-                <a href="https://github.com/votre-profil" 
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
-                   aria-label="GitHub">
-                  {socialIcons.github}
-                </a>
-                <a href="https://linkedin.com/in/votre-profil"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
-                   aria-label="LinkedIn">
-                  {socialIcons.linkedin}
-                </a>
-                <a href="https://twitter.com/votre-profil"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
-                   aria-label="Twitter">
-                  {socialIcons.twitter}
-                </a>
-                <a href="mailto:votre@email.com"
-                   className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
-                   aria-label="Email">
-                  {socialIcons.email}
-                </a>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <Suspense fallback={<Loading />}>
+          <ClientLayout>
+            {children}
+          </ClientLayout>
+        </Suspense>
       </body>
     </html>
   );
